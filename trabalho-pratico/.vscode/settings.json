@@ -1,0 +1,23 @@
+{
+    "files.associations": {
+        "dados.h": "c",
+        "string": "c",
+        "vector": "c",
+        "memory": "c",
+        "string_view": "c",
+        "system_error": "c",
+        "parser_flights.h": "c",
+        "hashtable.h": "c",
+        "datas.h": "c",
+        "ficheiros.h": "c",
+        "arraydin.h": "c",
+        "array": "c",
+        "reservas.h": "c",
+        "functional": "c",
+        "tuple": "c",
+        "utility": "c",
+        "estatistica.h": "c",
+        "string.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}

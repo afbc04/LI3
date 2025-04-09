@@ -1,0 +1,45 @@
+//   if (tipo_output==0) fprintf(fich,"%s;%s;%s;%s;%s;%s;%d;%d\n",voo.airline,voo.plane_model,voo.origin,voo.destination,voo.sch_departure_string,voo.sch_arrival_string,voo.n_passengers,voo.delay);
+//   if (tipo_output==1) fprintf(fich,"--- 1 ---\nairline: %s\nplane_model: %s\norigin: %s\ndestination: %s\nschedule_departure_date: %s\nschedule_arrival_date: %s\npassengers: %d\ndelay: %d\n",voo.airline,voo.plane_model,voo.origin,voo.destination,voo.sch_departure_string,voo.sch_arrival_string,voo.n_passengers,voo.delay);
+//   }
+
+//Função para a query 1
+ArrayDin* Q_ResumoVoos(void* voo_, short tipo_output) {
+  // tipo_output ->  |  0 = sem flag "F"  |  1 = com flag "F"
+
+    Voos* voo=voo_;
+    ArrayDin* novo=inicia_ArrayDin(8);
+
+    if (tipo_output==0) inserir_ArrayDin(criaOutputItem(voo->name,NULL),novo);
+    if (tipo_output==1) inserir_ArrayDin(criaOutputItem(voo->name,"name: "),novo);
+
+    if (tipo_output==0) inserir_ArrayDin(criaOutputItem(voo->sex,NULL),novo);
+    if (tipo_output==1) inserir_ArrayDin(criaOutputItem(voo->sex,"sex: "),novo);
+
+    char* age=IntParaString(voo->age);
+    if (tipo_output==0) inserir_ArrayDin(criaOutputItem(age,NULL),novo);
+    if (tipo_output==1) inserir_ArrayDin(criaOutputItem(age,"age: "),novo);
+    free(age);
+
+    if (tipo_output==0) inserir_ArrayDin(criaOutputItem(voo->country_code,NULL),novo);
+    if (tipo_output==1) inserir_ArrayDin(criaOutputItem(voo->country_code,"country_code: "),novo);
+
+    if (tipo_output==0) inserir_ArrayDin(criaOutputItem(voo->passport,NULL),novo);
+    if (tipo_output==1) inserir_ArrayDin(criaOutputItem(voo->passport,"passport: "),novo);
+
+    char* n_flights=IntParaString(getNumeroArrayDin(voo->flights));
+    if (tipo_output==0) inserir_ArrayDin(criaOutputItem(n_flights,NULL),novo);
+    if (tipo_output==1) inserir_ArrayDin(criaOutputItem(n_flights,"number_of_flights: "),novo);
+    free(n_flights);
+
+    char* n_reservas=IntParaString(getNumeroArrayDin(voo->reservations));
+    if (tipo_output==0) inserir_ArrayDin(criaOutputItem(n_reservas,NULL),novo);
+    if (tipo_output==1) inserir_ArrayDin(criaOutputItem(n_reservas,"number_of_reservations: "),novo);
+    free(n_reservas);
+
+    char* total_spent=DoubleParaString(voo->total_spent);
+    if (tipo_output==0) inserir_ArrayDin(criaOutputItem(total_spent,NULL),novo);
+    if (tipo_output==1) inserir_ArrayDin(criaOutputItem(total_spent,"total_spent: "),novo);
+    free(total_spent);
+
+    return novo;
+}
